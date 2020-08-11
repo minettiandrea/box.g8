@@ -1,11 +1,9 @@
 import Codegen._
 
-ThisBuild / scalaVersion     := "2.12.12"
-ThisBuild / version          := "0.1.0-SNAPSHOT"
-
 lazy val root = (project in file("."))
   .settings(
     name := "$name$",
+    scalaVersion := "2.12.12",
     resolvers += Resolver.bintrayRepo("waveinch","maven"),
     libraryDependencies += "boxframework" % "box-server_2.12" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value,
@@ -17,7 +15,10 @@ lazy val root = (project in file("."))
     dockerUpdateLatest := true,
     dockerEntrypoint := Seq("/opt/docker/bin/boot","-Dconfig.file=/application.conf"),
     newrelicVersion := "5.14.0",
-    newrelicIncludeApi := true
+    newrelicIncludeApi := true,
+    git.gitTagToVersionNumber := { tag:String =>
+      Some(tag)
+    },
   )
   .enablePlugins(
     JavaAppPackaging,
