@@ -11,5 +11,18 @@ lazy val root = (project in file("."))
     (resourceDirectory in Compile) := baseDirectory.value,
     (includeFilter in resources in Compile) := "*.conf",
     slick := slickCodeGenTask.value , // register manual sbt command
+    executableScriptName := "boot",
+    dockerExposedPorts ++= Seq(8080),
+    packageName in Docker := "$dockerName$",
+    dockerUpdateLatest := true,
+    dockerEntrypoint := Seq("/opt/docker/bin/boot","-Dconfig.file=/application.conf"),
+    newrelicVersion := "5.14.0",
+    newrelicIncludeApi := true
   )
+  .enablePlugins(
+    JavaAppPackaging,
+    DockerPlugin,
+    NewRelic
+  )
+
 
