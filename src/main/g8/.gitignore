@@ -1,0 +1,4 @@
+target/
+boot/
+project/plugins/project/
+.idea
