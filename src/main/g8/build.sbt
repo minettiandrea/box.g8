@@ -21,6 +21,7 @@ lazy val root = (project in file("."))
     },
   )
   .enablePlugins(
+    GitVersioning,
     JavaAppPackaging,
     DockerPlugin,
     NewRelic
