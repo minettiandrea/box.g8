@@ -24,8 +24,8 @@ jobs:
 
       - uses: azure/docker-login@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME  }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD  }}
+          username: $"$"${{ secrets.DOCKERHUB_USERNAME  }}
+          password: $"$"${{ secrets.DOCKERHUB_PASSWORD  }}
 
       - name: Push docker image
         run: docker push boxframework/box-framework:${{ steps.previoustag.outputs.tag }}
@@ -36,5 +36,5 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "server/target/universal/$name$-${{ steps.previoustag.outputs.tag }}.zip,server/target/scala-2.12/server_2.12-${{ steps.previoustag.outputs.tag }}.war"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: "server/target/universal/$name$-$"$"${{ steps.previoustag.outputs.tag }}.zip,server/target/scala-2.12/server_2.12-$"$"${{ steps.previoustag.outputs.tag }}.war"
+          token: $"$"${{ secrets.GITHUB_TOKEN }}
