@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "$name$",
     resolvers += Resolver.bintrayRepo("waveinch","maven"),
-    libraryDependencies += "boxframework" % "box-server_2.12" % "1.0.46-SNAPSHOT",
+    libraryDependencies += "boxframework" % "box-server_2.12" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value,
     (includeFilter in resources in Compile) := "*.conf",
     slick := slickCodeGenTask.value , // register manual sbt command
