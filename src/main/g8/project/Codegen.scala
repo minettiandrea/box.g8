@@ -2,8 +2,8 @@ import sbt.Keys._
 import sbt._
 
 object Codegen {
-  lazy val slick = taskKey[Seq[File]]("gen-tables")
-  lazy val slickCodeGenTask = Def.task{
+  lazy val generateModel = taskKey[Seq[File]]("gen-tables")
+  lazy val generateModelTask = Def.task{
     val out = (sbt.Keys.`package` in Compile).value
     println(out)
     val dir = sourceDirectory.value
