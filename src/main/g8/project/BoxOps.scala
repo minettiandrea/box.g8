@@ -9,7 +9,7 @@ object BoxOps {
 
   lazy val dropBox = taskKey[Unit]("Drop box schema")
   lazy val dropBoxTask = Def.task{
-      (runMain in Compile in server).toTask(" ch.wsl.box.model.DropBox").value
+      (runMain in Compile).toTask(" ch.wsl.box.model.DropBox").value
   }
 
 }
