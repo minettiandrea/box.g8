@@ -1,4 +1,5 @@
 import Codegen._
+import BoxOps._
 
 lazy val root = (project in file("."))
   .settings(
@@ -8,7 +9,9 @@ lazy val root = (project in file("."))
     libraryDependencies += "boxframework" %% "box-server" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
     (includeFilter in resources in Compile) := "*.conf",
-    generateModel := generateModelTask.value , // register manual sbt command
+    generateModel := generateModelTask.value, // register manual sbt command
+    installBox := installBoxTask.value, // register manual sbt command
+    dropBox := dropBoxTask.value, // register manual sbt command
     executableScriptName := "boot",
     dockerExposedPorts ++= Seq(8080),
     packageName in Docker := "$dockerName$",
