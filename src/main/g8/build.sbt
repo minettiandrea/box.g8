@@ -8,6 +8,7 @@ lazy val root = (project in file("."))
     resolvers += Resolver.bintrayRepo("waveinch","maven"),
     libraryDependencies += "boxframework" %% "box-server" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
+    unmanagedResourceDirectories in Compile += baseDirectory.value / "db",
     (includeFilter in resources in Compile) := "*.conf",
     generateModel := generateModelTask.value, // register manual sbt command
     installBox := installBoxTask.value, // register manual sbt command

@@ -2,3 +2,4 @@ target/
 boot/
 project/plugins/project/
 .idea
+conf/application.conf

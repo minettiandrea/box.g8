@@ -1,5 +1,4 @@
-import sbt.Keys._
-import sbt._
+
 
 object Codegen {
   lazy val generateModel = taskKey[Seq[File]]("gen-tables")
@@ -12,6 +11,7 @@ object Codegen {
     val files = cp.files ++ Seq(out)
     val s = streams.value
     val outputDir = (dir / "main" / "scala").getPath // place generated files in sbt's sources folder
+    runner.value.run("ch.wsl.box.model.Migrate", files, Seq(), s.log).failed foreach (sys error _.getMessage)
     runner.value.run("ch.wsl.box.codegen.CustomizedCodeGenerator", files, Array(outputDir), s.log).failed foreach (sys error _.getMessage)
     val fname = outputDir + "/ch/wsl/box/generated/Entities.scala"
     val ffname = outputDir + "/ch/wsl/box/generated/FileTables.scala"
