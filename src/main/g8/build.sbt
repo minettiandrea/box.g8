@@ -23,12 +23,16 @@ lazy val root = (project in file("."))
     git.gitTagToVersionNumber := { tag:String =>
       Some(tag)
     },
+    buildInfoKeys := Seq[BuildInfoKey](version,name),
+    buildInfoPackage := "boxAppInfo",
+    buildInfoObject := "BoxAppBuildInfo",
   )
   .enablePlugins(
     GitVersioning,
     JavaAppPackaging,
     DockerPlugin,
-    NewRelic
+    NewRelic,
+    BuildInfoPlugin
   )
 
 
