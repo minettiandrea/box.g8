@@ -1,4 +1,5 @@
-
+import sbt.Keys._
+import sbt._
 
 object Codegen {
   lazy val generateModel = taskKey[Seq[File]]("gen-tables")
