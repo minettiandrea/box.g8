@@ -26,6 +26,7 @@ lazy val root = (project in file("."))
     buildInfoKeys := Seq[BuildInfoKey](version,name),
     buildInfoPackage := "boxAppInfo",
     buildInfoObject := "BoxAppBuildInfo",
+    cleanFiles += new File("./src/main/scala/ch/wsl/box/generated")
   )
   .enablePlugins(
     GitVersioning,
