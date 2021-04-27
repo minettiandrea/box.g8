@@ -5,8 +5,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "$name$",
     scalaVersion := "2.12.12",
-    resolvers += Resolver.bintrayRepo("waveinch","maven"),
-    libraryDependencies += "boxframework" %% "box-server" % "$boxFrameworkVersion$",
+    libraryDependencies += "com.boxframework" %% "box-server" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
     unmanagedResourceDirectories in Compile += baseDirectory.value / "db",
     (includeFilter in resources in Compile) := "*.conf",
