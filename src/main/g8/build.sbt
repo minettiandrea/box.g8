@@ -5,6 +5,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "$name$",
     scalaVersion := "2.12.12",
+    resolvers += "OSGeo Releases" at "https://repo.osgeo.org/repository/release",
+    libraryDependencies += "javax.media" % "jai_core" % "1.1.3-explicit-resolve" from "https://repo.osgeo.org/repository/release/javax/media/jai_core/1.1.3/jai_core-1.1.3.jar",
     libraryDependencies += "com.boxframework" %% "box-server" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
     unmanagedResourceDirectories in Compile += baseDirectory.value / "db",
