@@ -3,6 +3,18 @@ import sbt._
 
 object Codegen {
 
+  lazy val migrate = taskKey[Boolean]("migrate")
+  lazy val migrateTask = Def.sequential(
+    Def.task{
+      val s = streams.value
+      val cp = (dependencyClasspath in Compile).value
+      val out = (sbt.Keys.`package` in Compile).value
+      val files = cp.files ++ Seq(out)
+      runner.value.run("ch.wsl.box.model.Migrate", files, Seq(), s.log).failed foreach (sys error _.getMessage)
+      true
+    }
+  )
+  
   lazy val generateModel = taskKey[Boolean]("gen-tables")
   lazy val generateModelTask = Def.sequential(
     clean,
