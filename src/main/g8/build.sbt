@@ -11,6 +11,7 @@ lazy val root = (project in file("."))
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
     unmanagedResourceDirectories in Compile += baseDirectory.value / "db",
     Compile / unmanagedSourceDirectories += baseDirectory.value / "db",
+    Compile / run / mainClass := Some("Serve"),
     (includeFilter in resources in Compile) := "*.conf",
     generateModel := generateModelTask.value, // register manual sbt command
     migrate := migrateTask.value, // register manual sbt command
