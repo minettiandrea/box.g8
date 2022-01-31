@@ -4,8 +4,10 @@ import BoxOps._
 lazy val root = (project in file("."))
   .settings(
     name := "$name$",
-    scalaVersion := "2.12.12",
+    scalaVersion := "2.13.8",
+    resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots",
     resolvers += "OSGeo Releases" at "https://repo.osgeo.org/repository/release",
+    resolvers += "Eclipse" at "https://repo.eclipse.org/content/groups/snapshots",
     libraryDependencies += "javax.media" % "jai_core" % "1.1.3-explicit-resolve" from "https://repo.osgeo.org/repository/release/javax/media/jai_core/1.1.3/jai_core-1.1.3.jar",
     libraryDependencies += "com.boxframework" %% "box-server" % "$boxFrameworkVersion$",
     (resourceDirectory in Compile) := baseDirectory.value / "conf",
