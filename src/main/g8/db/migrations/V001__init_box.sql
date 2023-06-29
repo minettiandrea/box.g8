@@ -62,3 +62,7 @@ To add forms and pages use the <a href="/admin">Admin section</a>
     <li><a href="/entities">Tables/Views</a></li>
     <li><a href="/forms">Forms</a></li>
 </ul>', null, null, null, null, 'b3008e10-470b-427f-b98f-e465041c3ee8', '8e0646ea-536b-4a72-acf6-d8755a70c35e');
+
+update $dbBoxSchema$.conf set value='$mainColor$' where key='color.main';
+update $dbBoxSchema$.conf set value='#fff' where key='color.link';
+update $dbBoxSchema$.ui set value='$title$' where key='title' or key='footerCopyright';
