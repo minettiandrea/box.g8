@@ -66,3 +66,30 @@ To add forms and pages use the <a href="/admin">Admin section</a>
 update $dbBoxSchema$.conf set value='$mainColor$' where key='color.main';
 update $dbBoxSchema$.conf set value='#fff' where key='color.link';
 update $dbBoxSchema$.ui set value='$title$' where key='title' or key='footerCopyright';
+
+insert into $dbBoxSchema$.labels (lang, key, label) VALUES ('en','table.shp','Download SHP');
+insert into $dbBoxSchema$.labels (lang, key, label) VALUES ('en','form.print','Print');
+
+INSERT INTO $dbBoxSchema$.conf (key, value) VALUES ('map.options', e'{
+    "features": {
+        "point": true,
+        "multiPoint": true,
+        "line": true,
+        "multiLine": true,
+        "polygon": true,
+        "multiPolygon": true,
+        "geometryCollection": true
+    },
+    "projections": [
+        {
+            "name": "EPSG:4326",
+            "proj": "+proj=longlat +datum=WGS84 +no_defs +type=crs",
+            "unit": "°",
+            "extent": [
+                -180.0, -90.0, 180.0, 90.0
+            ]
+        }
+    ],
+    "defaultProjection": "EPSG:4326"
+}');
+
