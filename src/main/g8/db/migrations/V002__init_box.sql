@@ -68,7 +68,7 @@ update $dbBoxSchema$.conf set value='#fff' where key='color.link';
 update $dbBoxSchema$.ui set value='$title$' where key='title' or key='footerCopyright';
 
 insert into $dbBoxSchema$.labels (lang, key, label) VALUES ('en','table.shp','Download SHP');
-insert into $dbBoxSchema$.labels (lang, key, label) VALUES ('en','form.print','Print');
+insert into $dbBoxSchema$.labels (lang, key, label) VALUES ('en','form.print','Print') on conflict (lang,key) do update set label='Print';
 
 INSERT INTO $dbBoxSchema$.conf (key, value) VALUES ('map.options', e'{
     "features": {
