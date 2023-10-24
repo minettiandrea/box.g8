@@ -1,0 +1,17 @@
+build:
+  image: hnaderi/sbt-ci-image:openjdk-8u342_1.8.0_2.13.10_20.10-cli
+  stage: deploy
+  tags:
+    - docker-build
+  services:
+    - name: docker:20.10-dind
+  only:
+    - tags
+  variables:
+    IMAGE_TAG: \$CI_REGISTRY_IMAGE:\$CI_COMMIT_TAG
+    DOCKER_TLS_CERTDIR: "/certs"
+  script:
+    - echo \$IMAGE_TAG
+    - docker login -u \$CI_REGISTRY_USER -p \$CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - sbt -J-Xmx4G -J-XX:MaxMetaspaceSize=1G -J-XX:MaxPermSize=1G -J-XX:+CMSClassUnloadingEnabled -J-Xss3m docker:publishLocal
+    - docker push \$IMAGE_TAG

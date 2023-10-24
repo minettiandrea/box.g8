@@ -4,7 +4,7 @@ import BoxOps._
 lazy val root = (project in file("."))
   .settings(
     name := "$name$",
-    scalaVersion := "2.13.8",
+    scalaVersion := "2.13.9",
     resolvers += "Sonatype S01 OSS Snapshots" at "https://s01.oss.sonatype.org/content/repositories/snapshots",
     resolvers += "OSGeo Releases" at "https://repo.osgeo.org/repository/release",
     resolvers += "Eclipse" at "https://repo.eclipse.org/content/groups/snapshots",
