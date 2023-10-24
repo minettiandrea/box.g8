@@ -12,6 +12,6 @@ build:
     DOCKER_TLS_CERTDIR: "/certs"
   script:
     - echo \$IMAGE_TAG
-    - docker login -u \$CI_REGISTRY_USER -p \$CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker login -u \$CI_REGISTRY_USER -p \$CI_REGISTRY_PASSWORD \$CI_REGISTRY
     - sbt -J-Xmx4G -J-XX:MaxMetaspaceSize=1G -J-XX:MaxPermSize=1G -J-XX:+CMSClassUnloadingEnabled -J-Xss3m docker:publishLocal
     - docker push \$IMAGE_TAG
