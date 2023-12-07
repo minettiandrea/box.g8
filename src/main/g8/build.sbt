@@ -18,6 +18,7 @@ lazy val root = (project in file("."))
     installBox := installBoxTask.value, // register manual sbt command
     dropBox := dropBoxTask.value, // register manual sbt command
     executableScriptName := "boot",
+    dockerBaseImage := "eclipse-temurin:11-alpine",
     dockerExposedPorts ++= Seq(8080),
     packageName in Docker := "$dockerName$",
     dockerUpdateLatest := true,
