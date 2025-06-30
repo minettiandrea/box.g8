@@ -48,11 +48,10 @@ INSERT INTO $dbBoxSchema$.labels (lang, key, label) VALUES ('en', 'boolean.yes',
 INSERT INTO $dbBoxSchema$.labels (lang, key, label) VALUES ('en', 'boolean.no', null);
 INSERT INTO $dbBoxSchema$.labels (lang, key, label) VALUES ('en', 'table.shp', null);
 
-
 INSERT INTO $dbBoxSchema$.ui (key, value, access_level_id) VALUES ('index.page', 'home', 1);
 INSERT INTO $dbBoxSchema$.form (name, entity, description, layout, "tabularFields", query, exportfields, guest_user, edit_key_field, show_navigation, props, form_uuid, params) VALUES ('home', 'box_static_page', null, '{"blocks":[{"title":null,"width":6,"distribute":null,"fields":["intro"],"tab":null,"tabGroup":null}]}', null, null, null, null, null, false, null, 'f680de5e-25d8-4a11-9d81-a76a9e6dac9f', '{"hideHeader": true}');
-INSERT INTO $dbBoxSchema$.field (type, name, widget, "lookupEntity", "lookupValueField", "lookupQuery", "masterFields", "childFields", "childQuery", "default", "conditionFieldId", "conditionValues", params, read_only, required, field_uuid, form_uuid, child_form_uuid, function, min, max) VALUES ('static', 'intro', 'html', null, null, null, null, null, null, null, null, null, null, false, null, '8e0646ea-536b-4a72-acf6-d8755a70c35e', 'f680de5e-25d8-4a11-9d81-a76a9e6dac9f', null, null, null, null);
-INSERT INTO $dbBoxSchema$.field_i18n (lang, label, placeholder, tooltip, hint, "lookupTextField", uuid, field_uuid) VALUES ('en', e'<h1>Welcome to Box Framework</h1>
+INSERT INTO $dbBoxSchema$.field (type, name, widget,  "childQuery", "default", "conditionFieldId", "conditionValues", params, read_only, required, field_uuid, form_uuid, child_form_uuid, function, min, max) VALUES ('static', 'intro', 'html',  null, null, null, null, null, false, null, '8e0646ea-536b-4a72-acf6-d8755a70c35e', 'f680de5e-25d8-4a11-9d81-a76a9e6dac9f', null, null, null, null);
+INSERT INTO $dbBoxSchema$.field_i18n (lang, label, placeholder, tooltip, hint, uuid, field_uuid) VALUES ('en', e'<h1>Welcome to Box Framework</h1>
 <p>
 To add forms and pages use the <a href="/admin">Admin section</a>
 </p>
@@ -61,7 +60,8 @@ To add forms and pages use the <a href="/admin">Admin section</a>
 <ul>
     <li><a href="/entities">Tables/Views</a></li>
     <li><a href="/forms">Forms</a></li>
-</ul>', null, null, null, null, 'b3008e10-470b-427f-b98f-e465041c3ee8', '8e0646ea-536b-4a72-acf6-d8755a70c35e');
+</ul>', null, null, null, 'b3008e10-470b-427f-b98f-e465041c3ee8', '8e0646ea-536b-4a72-acf6-d8755a70c35e');
+
 
 update $dbBoxSchema$.conf set value='$mainColor$' where key='color.main';
 update $dbBoxSchema$.conf set value='#fff' where key='color.link';
